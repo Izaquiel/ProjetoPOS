@@ -21,7 +21,8 @@ import javax.persistence.TemporalType;
  * @author Izaquiel
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "buscarUsuarioPorLogin", query = "Select u From Usuario u Where u.login= :login")})
+@NamedQueries({@NamedQuery(name = "buscarUsuarioPorLogin", query = "Select u From Usuario u Where u.login= :login"),
+@NamedQuery(name = "listarTodosUsuarios", query = "Select u From Usuario u")})
 public class Usuario implements Serializable{
     @Id
     @GeneratedValue

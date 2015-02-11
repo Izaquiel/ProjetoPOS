@@ -10,12 +10,15 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Izaquiel
  */
 @Entity
+@NamedQueries({@NamedQuery(name = "listaTodasCidades", query = "Select c From Cidade c")})
 public class Cidade implements Serializable{
     @Id
     @GeneratedValue

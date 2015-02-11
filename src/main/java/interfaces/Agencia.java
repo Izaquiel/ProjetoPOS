@@ -6,7 +6,6 @@
 
 package interfaces;
 
-import entidades.Passagem;
 import entidades.Usuario;
 import entidades.Voo;
 import java.util.Date;
@@ -32,5 +31,5 @@ public interface Agencia {
     public Usuario getUsuario(String login);
     
     @WebMethod
-    public String getNomeUsuario(String login);
+    public List<Voo> getTodosVoos();
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package service;
 
 import entidades.Passagem;
@@ -58,11 +53,8 @@ public class AgenciaService implements Agencia {
     }
 
     @Override
-    public String getNomeUsuario(String login) {
-        Map<String, String> map = new HashMap<>();
-        map.put("login", login);
-        Usuario user = daoUsuario.buscar("buscarUsuarioPorLogin", map);
-        return user.getNome();
+    public List<Voo> getTodosVoos() {
+        return daoVoo.buscarTodos("buscaTodosVoos");
     }
 
 }

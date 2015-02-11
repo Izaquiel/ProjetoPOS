@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -19,6 +21,7 @@ import javax.persistence.OneToOne;
  * @author Izaquiel
  */
 @Entity
+@NamedQueries({@NamedQuery(name = "listaTodasPassagens", query = "Select p From Passagem p")})
 public class Passagem implements Serializable{
     @Id
     @GeneratedValue
