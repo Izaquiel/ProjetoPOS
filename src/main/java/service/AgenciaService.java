@@ -28,6 +28,8 @@ public class AgenciaService implements Agencia {
     Dao<Usuario> daoUsuario;
     @EJB
     Dao<Passagem> daoPassagem;
+    @EJB
+    Dao<Voo> daoVoo;
 
     @Override
     public boolean salvarUsuario(Usuario usuario) {
@@ -43,13 +45,9 @@ public class AgenciaService implements Agencia {
     }
 
     @Override
-    public List<Passagem> getPassagensPorData(Date data) {
-        return null;
-    }
-
-    @Override
     public List<Voo> getVoosPorData(Date data) {
-        return null;
+        System.out.println(data.toString());
+        return daoVoo.buscarTodosPorData("buscaVoosPorData", data);
     }
 
     @Override

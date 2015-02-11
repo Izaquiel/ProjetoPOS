@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -50,6 +52,16 @@ public class Dao<T> {
     public List<T> buscarTodos(String namedQuery) {
         
         Query consulta = em.createNamedQuery(namedQuery);
+        
+        return consulta.getResultList();
+        
+    }    
+    
+    public List<T> buscarTodosPorData(String namedQuery, Date data) {
+        
+        Query consulta = em.createNamedQuery(namedQuery);
+        
+        consulta.setParameter("data", data, TemporalType.DATE);
         
         return consulta.getResultList();
         

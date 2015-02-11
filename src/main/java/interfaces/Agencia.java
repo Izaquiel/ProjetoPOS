@@ -26,9 +26,6 @@ public interface Agencia {
     public boolean venderPassagem(Voo voo, Usuario usuario);
     
     @WebMethod
-    public List<Passagem> getPassagensPorData(Date data);
-    
-    @WebMethod
     public List<Voo> getVoosPorData(Date data);
     
     @WebMethod
