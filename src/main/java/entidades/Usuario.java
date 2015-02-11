@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +21,7 @@ import javax.persistence.TemporalType;
  * @author Izaquiel
  */
 @Entity
+@NamedQueries({@NamedQuery(name = "buscarUsuarioPorLogin", query = "Select u From Usuario u Where u.login= :login")})
 public class Usuario implements Serializable{
     @Id
     @GeneratedValue
@@ -80,6 +83,11 @@ public class Usuario implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: "+ this.nome + " Login: " + this.login;
     }
     
     

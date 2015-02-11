@@ -33,4 +33,7 @@ public interface Agencia {
     
     @WebMethod
     public Usuario getUsuario(String login);
+    
+    @WebMethod
+    public String getNomeUsuario(String login);
 }
