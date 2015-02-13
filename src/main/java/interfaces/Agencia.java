@@ -22,7 +22,7 @@ public interface Agencia {
     public boolean salvarUsuario(Usuario usuario);
     
     @WebMethod
-    public boolean venderPassagem(Voo voo, Usuario usuario);
+    public boolean venderPassagem(long idVoo, Usuario usuario);
     
     @WebMethod
     public List<Voo> getVoosPorData(Date data);

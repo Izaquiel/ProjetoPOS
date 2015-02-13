@@ -33,10 +33,16 @@ public class AgenciaService implements Agencia {
     }
 
     @Override
-    public boolean venderPassagem(Voo voo, Usuario usuario) {
-        Passagem passagem = new Passagem(usuario, voo);
-        daoPassagem.salvar(passagem);
-        return true;
+    public boolean venderPassagem(long idVoo, Usuario usuario) {
+        Map<String, Long> map = new HashMap<>();
+        map.put("id", idVoo);
+        Voo voo = daoVoo.buscar("buscaVoosPorId", map);
+        if (voo != null) {
+            Passagem passagem = new Passagem(usuario, voo);
+            daoPassagem.salvar(passagem);
+            return true;
+        }else
+            return false;
     }
 
     @Override

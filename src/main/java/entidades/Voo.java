@@ -24,7 +24,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @NamedQueries({@NamedQuery(name = "buscaVoosPorData", query = "Select v From Voo v Where v.dataVoo = :data"),
-@NamedQuery(name = "buscaTodosVoos", query = "Select v From Voo v")})
+@NamedQuery(name = "buscaTodosVoos", query = "Select v From Voo v"),
+@NamedQuery(name = "buscaVoosPorId", query = "Select v From Voo v Where v.id = :id")})
 public class Voo implements Serializable {
 
     @Id
