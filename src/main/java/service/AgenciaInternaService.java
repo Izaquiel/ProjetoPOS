@@ -11,7 +11,9 @@ import entidades.Passagem;
 import entidades.Usuario;
 import entidades.Voo;
 import interfaces.AgenciaInterno;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.jws.WebService;
 import persistencia.Dao;
@@ -74,6 +76,20 @@ public class AgenciaInternaService implements AgenciaInterno{
     @Override
     public List<Passagem> listarPassagens() {
         return daoPassagem.buscarTodos("listaTodasPassagens");
+    }
+
+    @Override
+    public Voo getVooPorId(long id) {
+        Map<String, Long> map = new HashMap<>();
+        map.put("id", id);
+        return daoVoo.buscar("buscaVoosPorId", map);
+    }
+
+    @Override
+    public Cidade getCidadePorId(long id) {
+        Map<String, Long> map = new HashMap<>();
+        map.put("id", id);
+        return daoCidade.buscar("buscaCidadePorId", map);
     }
     
 }

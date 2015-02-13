@@ -40,4 +40,9 @@ public interface AgenciaInterno {
     @WebMethod
     public List<Passagem> listarPassagens();
     
+    @WebMethod
+    public Voo getVooPorId(long id);
+    
+    @WebMethod
+    public Cidade getCidadePorId(long id);
 }

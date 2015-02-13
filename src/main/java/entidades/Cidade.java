@@ -18,7 +18,8 @@ import javax.persistence.NamedQuery;
  * @author Izaquiel
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "listaTodasCidades", query = "Select c From Cidade c")})
+@NamedQueries({@NamedQuery(name = "listaTodasCidades", query = "Select c From Cidade c"),
+@NamedQuery(name = "buscaCidadePorId", query = "Select c From Cidade c Where c.id = :id")})
 public class Cidade implements Serializable{
     @Id
     @GeneratedValue

@@ -41,7 +41,7 @@ public class Voo implements Serializable {
     private Cidade destino;
 
     private Double valor;
-    private int vagas;
+    private Integer vagas;
     
     @Temporal(TemporalType.DATE)
     private Date dataVoo;
@@ -97,11 +97,11 @@ public class Voo implements Serializable {
         this.destino = destino;
     }
 
-    public int getVagas() {
+    public Integer getVagas() {
         return vagas;
     }
 
-    public void setVagas(int vagas) {
+    public void setVagas(Integer vagas) {
         this.vagas = vagas;
     }
 
