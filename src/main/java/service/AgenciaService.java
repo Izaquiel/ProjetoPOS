@@ -1,5 +1,7 @@
 package service;
 
+import entidades.Administrador;
+import entidades.Cidade;
 import entidades.Passagem;
 import entidades.Usuario;
 import entidades.Voo;
@@ -25,6 +27,10 @@ public class AgenciaService implements Agencia {
     Dao<Passagem> daoPassagem;
     @EJB
     Dao<Voo> daoVoo;
+    @EJB
+    Dao<Administrador> daoAdm;
+    @EJB
+    Dao<Cidade> daoCidade;
 
     @Override
     public boolean salvarUsuario(Usuario usuario) {
@@ -41,8 +47,9 @@ public class AgenciaService implements Agencia {
             Passagem passagem = new Passagem(usuario, voo);
             daoPassagem.salvar(passagem);
             return true;
-        }else
+        } else {
             return false;
+        }
     }
 
     @Override
@@ -52,15 +59,36 @@ public class AgenciaService implements Agencia {
     }
 
     @Override
-    public Usuario getUsuario(String login) {
+    public Usuario getUsuario(String cpf) {
         Map<String, String> map = new HashMap<>();
-        map.put("login", login);
-        return daoUsuario.buscar("buscarUsuarioPorLogin", map);
+        map.put("cpf", cpf);
+        return daoUsuario.buscar("buscarUsuarioPorCpf", map);
     }
 
     @Override
     public List<Voo> getTodosVoos() {
         return daoVoo.buscarTodos("buscaTodosVoos");
+    }
+
+    @Override
+    public Administrador getAdministrador(String login, String senha) {
+        Map<String, String> map = new HashMap<>();
+        map.put("login", login);
+        map.put("senha", senha);
+        return daoAdm.buscar("logarAdmin", map);
+    }
+
+    @Override
+    public List<Cidade> getCidades() {
+        return daoCidade.buscarTodos("listaTodasCidades");
+    }
+
+    @Override
+    public Voo getVoo(long cidadeOrigem, long cidadeDestino) {
+        Map<String, Long> map = new HashMap<>();
+        map.put("idOrigem", cidadeOrigem);
+        map.put("idDestino", cidadeDestino);
+        return daoVoo.buscar("buscaVoosPorCidade", map);
     }
 
 }

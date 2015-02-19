@@ -6,6 +6,8 @@
 
 package interfaces;
 
+import entidades.Administrador;
+import entidades.Cidade;
 import entidades.Usuario;
 import entidades.Voo;
 import java.util.Date;
@@ -28,8 +30,17 @@ public interface Agencia {
     public List<Voo> getVoosPorData(Date data);
     
     @WebMethod
-    public Usuario getUsuario(String login);
+    public Usuario getUsuario(String cpf);
+    
+    @WebMethod
+    public Administrador getAdministrador(String login, String senha);
     
     @WebMethod
     public List<Voo> getTodosVoos();
+    
+    @WebMethod
+    public List<Cidade> getCidades();
+    
+    @WebMethod
+    public Voo getVoo(long cidadeOrigem, long cidadeDestino);
 }

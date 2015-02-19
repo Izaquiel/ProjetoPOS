@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,8 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({@NamedQuery(name = "buscaVoosPorData", query = "Select v From Voo v Where v.dataVoo = :data"),
 @NamedQuery(name = "buscaTodosVoos", query = "Select v From Voo v"),
+@NamedQuery(name = "buscaVoosPorCidade", query = "Select v From Voo v Where v.origem.id = :idOrigem "
+        + "and v.destino.id = :idDestino"),
 @NamedQuery(name = "buscaVoosPorId", query = "Select v From Voo v Where v.id = :id")})
 public class Voo implements Serializable {
 
@@ -105,4 +108,35 @@ public class Voo implements Serializable {
         this.vagas = vagas;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.origem);
+        hash = 29 * hash + Objects.hashCode(this.destino);
+        return hash;
+    }
+
+  
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Voo other = (Voo) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.origem, other.origem)) {
+            return false;
+        }
+        if (!Objects.equals(this.destino, other.destino)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

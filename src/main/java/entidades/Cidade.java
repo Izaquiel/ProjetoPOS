@@ -7,6 +7,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -48,6 +49,32 @@ public class Cidade implements Serializable{
 
     public void setNomeCidade(String nomeCidade) {
         this.nomeCidade = nomeCidade;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.nomeCidade);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cidade other = (Cidade) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.nomeCidade, other.nomeCidade)) {
+            return false;
+        }
+        return true;
     }
     
     

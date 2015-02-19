@@ -21,45 +21,14 @@ import javax.persistence.TemporalType;
  * @author Izaquiel
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "buscarUsuarioPorLogin", query = "Select u From Usuario u Where u.login= :login"),
-@NamedQuery(name = "listarTodosUsuarios", query = "Select u From Usuario u")})
-public class Usuario implements Serializable{
-    @Id
-    @GeneratedValue
-    private long id;
-    
-    private String nome;
+@NamedQueries({@NamedQuery(name = "listarTodosUsuarios", query = "Select u From Usuario u"),
+@NamedQuery(name = "buscarUsuarioPorCpf", query = "Select u From Usuario u Where u.cpf = :cpf")})
+public class Usuario extends Pessoa{
     
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
-    
-    private String login;
-    private String senha;
 
     public Usuario() {
-    }
-
-    public Usuario( String nome, Date dataNascimento, String login, String senha) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.login = login;
-        this.senha = senha;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Date getDataNascimento() {
@@ -70,25 +39,9 @@ public class Usuario implements Serializable{
         this.dataNascimento = dataNascimento;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     @Override
     public String toString() {
-        return "Nome: "+ this.nome + " Login: " + this.login;
+        return "Nome: "+ this.getNome() + " CPF: " + this.getCpf();
     }
     
     

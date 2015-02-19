@@ -32,9 +32,6 @@ public interface AgenciaInterno {
     public void editarCidade(Cidade cidade);
     
     @WebMethod
-    public List<Cidade> listarCidades();
-    
-    @WebMethod
     public void editarPassagem(Passagem passagem);
     
     @WebMethod

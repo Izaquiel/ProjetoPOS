@@ -64,11 +64,6 @@ public class AgenciaInternaService implements AgenciaInterno{
     }
 
     @Override
-    public List<Cidade> listarCidades() {
-        return daoCidade.buscarTodos("listaTodasCidades");
-    }
-
-    @Override
     public void editarPassagem(Passagem passagem) {
         daoPassagem.atualizar(passagem);
     }
