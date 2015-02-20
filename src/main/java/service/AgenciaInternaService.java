@@ -6,6 +6,7 @@
 
 package service;
 
+import entidades.Administrador;
 import entidades.Cidade;
 import entidades.Passagem;
 import entidades.Usuario;
@@ -32,6 +33,8 @@ public class AgenciaInternaService implements AgenciaInterno{
     Dao<Voo> daoVoo;
     @EJB
     Dao<Passagem> daoPassagem;
+    @EJB
+    Dao<Administrador> daoAdm;
     
     @Override
     public void editarUsuario(Usuario usuario) {
@@ -85,6 +88,28 @@ public class AgenciaInternaService implements AgenciaInterno{
         Map<String, Long> map = new HashMap<>();
         map.put("id", id);
         return daoCidade.buscar("buscaCidadePorId", map);
+    }
+
+    @Override
+    public void salvarAdmin(Administrador adm) {
+        daoAdm.salvar(adm);
+    }
+
+    @Override
+    public void editarAdmin(Administrador adm) {
+        daoAdm.atualizar(adm);
+    }
+
+    @Override
+    public List<Administrador> listarAdmins() {
+        return daoAdm.buscarTodos("buscarTodosAdm");
+    }
+
+    @Override
+    public Administrador getAdminPorCpf(String cpf) {
+        Map<String, String> map = new HashMap<>();
+        map.put("cpf", cpf);
+        return daoAdm.buscar("getAdminPorCpf", map);
     }
     
 }

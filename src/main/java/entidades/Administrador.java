@@ -15,7 +15,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({@NamedQuery(name = "logarAdmin", query = "Select a From Administrador a Where a.login= :login "
-        + "and a.senha = :senha")})
+        + "and a.senha = :senha"),
+@NamedQuery(name = "buscarTodosAdm", query = "Select a From Administrador a"),
+@NamedQuery(name = "getAdminPorCpf", query = "Select a From Administrador a where a.cpf =:cpf")})
 public class Administrador extends Pessoa{
 
     private String login;

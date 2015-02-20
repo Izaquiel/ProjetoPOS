@@ -1,5 +1,6 @@
 package interfaces;
 
+import entidades.Administrador;
 import entidades.Cidade;
 import entidades.Passagem;
 import entidades.Usuario;
@@ -42,4 +43,16 @@ public interface AgenciaInterno {
     
     @WebMethod
     public Cidade getCidadePorId(long id);
+    
+    @WebMethod
+    public void salvarAdmin(Administrador adm);
+    
+    @WebMethod
+    public void editarAdmin(Administrador adm);
+    
+    @WebMethod
+    public List<Administrador> listarAdmins();
+    
+    @WebMethod
+    public Administrador getAdminPorCpf(String cpf);
 }
