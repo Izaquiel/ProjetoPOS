@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 
 /**
  *
- * @author Izaquiel
+ * @author Joelanio
  */
 @Entity
 @NamedQueries({@NamedQuery(name = "listaTodasCidades", query = "Select c From Cidade c"),

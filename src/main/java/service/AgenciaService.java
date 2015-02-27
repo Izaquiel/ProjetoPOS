@@ -91,4 +91,9 @@ public class AgenciaService implements Agencia {
         return daoVoo.buscar("buscaVoosPorCidade", map);
     }
 
+    @Override
+    public Voo getVooPorId(long id) {
+        return daoVoo.buscaPorId(Voo.class, id);
+    }
+
 }

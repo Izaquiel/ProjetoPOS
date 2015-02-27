@@ -21,7 +21,7 @@ import persistencia.Dao;
 
 /**
  *
- * @author Izaquiel
+ * @author Wagner Abreu
  */
 @WebService(name = "AgenciaInterno")
 public class AgenciaInternaService implements AgenciaInterno{

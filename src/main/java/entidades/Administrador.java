@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 
 /**
  *
- * @author Izaquiel
+ * @author Joelanio
  */
 @Entity
 @NamedQueries({@NamedQuery(name = "logarAdmin", query = "Select a From Administrador a Where a.login= :login "

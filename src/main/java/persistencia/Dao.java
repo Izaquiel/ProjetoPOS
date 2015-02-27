@@ -27,6 +27,10 @@ public class Dao<T> {
         em.persist(novo);
     }
     
+    public T buscaPorId(Class<T> tipoClass, long id){
+        return (T) em.find(tipoClass, id);
+    }
+    
     public void atualizar(Object o) {
         em.merge(o);
     }

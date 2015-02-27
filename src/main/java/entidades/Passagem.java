@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author Izaquiel
+ * @author Wagner Abreu
  */
 @Entity
 @NamedQueries({@NamedQuery(name = "listaTodasPassagens", query = "Select p From Passagem p")})

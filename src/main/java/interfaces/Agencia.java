@@ -43,4 +43,7 @@ public interface Agencia {
     
     @WebMethod
     public Voo getVoo(long cidadeOrigem, long cidadeDestino);
+    
+    @WebMethod
+    public Voo getVooPorId(long id);
 }
